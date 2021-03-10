@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Baza recenzenata</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="dizajn.css"/>
+        <div class="sadrzaj"> 
+            <h2>Kreiranje obaveštenja</h2>
+            <h:form id="forma">
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Naslov: "/>
+                    <p:inputText value="#{obavestenjeKontroler.naslov}"/>
+                    <p:outputLabel value="Teskt: "/>
+                    <p:inputTextarea rows="7" cols="30" value="#{obavestenjeKontroler.tekst}"/>
+                    <p:outputLabel value="Potpis: "/>
+                    <p:inputText value="#{obavestenjeKontroler.potpis}"/>
+                    <p:outputLabel value="Tip obaveštenja:"/>
+                    <p:selectOneRadio value="#{obavestenjeKontroler.tip}">
+                        <f:selectItem itemLabel="mejl" itemValue="mejl"/>
+                        <f:selectItem itemLabel="profil" itemValue="profil"/>
+                    </p:selectOneRadio>
+                </h:panelGrid>
+                <br/><br/>
+                <p:commandButton value="Potvrdi" action="#{obavestenjeKontroler.posaljiObavestenje()}" update="forma"/>
+            </h:form>
+            <h:form>
+                <br/><br/><br/>
+                <p:commandLink value="Nazad" action="/faces/admin/admin?faces-redirect=true"/>
+                <br/>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

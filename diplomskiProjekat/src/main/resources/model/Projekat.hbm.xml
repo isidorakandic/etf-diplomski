@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2019 10:16:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Projekat" table="projekat" catalog="baza_recenzenata" optimistic-lock="version">
+        <id name="idprojekat" type="java.lang.Integer">
+            <column name="idprojekat" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="programskiPoziv" class="model.ProgramskiPoziv" fetch="select">
+            <column name="idprogramski_poziv" not-null="true" />
+        </many-to-one>
+        <property name="naziv" type="string">
+            <column name="naziv" length="100" not-null="true" />
+        </property>
+        <property name="rukovodilac" type="string">
+            <column name="rukovodilac" length="100" not-null="true" />
+        </property>
+        <property name="nioRukovodioca" type="string">
+            <column name="nio_rukovodioca" length="100" />
+        </property>
+        <property name="zvanjeRukovodioca" type="string">
+            <column name="zvanje_rukovodioca" length="45" />
+        </property>
+        <property name="angazovanjeRukovodioca" type="string">
+            <column name="angazovanje_rukovodioca" length="45" />
+        </property>
+        <property name="lokacijaDokumenata" type="string">
+            <column name="lokacija_dokumenata" length="150" />
+        </property>
+        <property name="oblast" type="string">
+            <column name="oblast" length="45" not-null="true" />
+        </property>
+        <property name="datum" type="date">
+            <column name="datum" length="10" not-null="true" />
+        </property>
+        <property name="konacnaOcena" type="java.lang.Integer">
+            <column name="konacna_ocena" />
+        </property>
+        <set name="korisnikProjekats" table="korisnik_projekat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idprojekat" not-null="true" />
+            </key>
+            <one-to-many class="model.KorisnikProjekat" />
+        </set>
+    </class>
+</hibernate-mapping>

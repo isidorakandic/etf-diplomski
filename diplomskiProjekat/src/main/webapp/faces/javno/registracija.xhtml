@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Baza recenzenata </title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="dizajn.css"/>
+        <div class="sadrzaj"> 
+            <h2>Registracija</h2>
+            <br></br>
+            <h:form id="forma" enctype="multipart/form-data">
+                <h:panelGroup rendered="#{registracijaKontroler.prikaziFormu}">
+                    <h:panelGrid columns="3">
+                        <p:outputLabel value="Ime:"/>
+                        <p:inputText id="ime" value="#{registracijaKontroler.korisnik.ime}" required="true" requiredMessage="Morate uneti ime!"/>
+                        <p:message for="ime"/>
+                        <p:outputLabel value="Prezime:"/>
+                        <p:inputText id="prezime" value="#{registracijaKontroler.korisnik.prezime}" required="true" requiredMessage="Morate uneti prezime!"/>
+                        <p:message for="prezime"/>
+                        <p:outputLabel value="Korisničko ime:"/>
+                        <p:inputText id="korime" value="#{registracijaKontroler.korisnik.korisnickoIme}" required="true" requiredMessage="Morate uneti korisničko ime!"/>
+                        <p:message for="korime"/>
+                        <p:outputLabel value="Lozinka:"/>
+                        <p:password id="lozinka" value="#{registracijaKontroler.korisnik.lozinka}" required="true" requiredMessage="Morate uneti lozinku!" validatorMessage="Lozinka nije u dobrom formatu!">
+                            <!--<f:validateRegex pattern="^(?=.{8,12}$)(?!.*(\S)\1{2})(?=.*[A-Z])(?=.*[a-z]{3})(?=.*\d)(?=.*[^a-zA-Z0-9])([a-zA-Z]\S*)$"></f:validateRegex>-->
+                        </p:password>
+                        <p:message for="lozinka"/>
+                        <p:outputLabel value="Potvrda lozinke:"/>
+                        <p:password id="potvloz" value="#{registracijaKontroler.potvrdaLozinke}" required="true" requiredMessage="Morate uneti potvrdu lozinke!"/>
+                        <p:message for="potvloz"/>
+                        <p:outputLabel value="Nacionalnost:"/>
+                        <p:inputText id="nacionalnost" value="#{registracijaKontroler.korisnik.nacionalnost}" required="false" requiredMessage="Morate uneti nacionalnost!"/>
+                        <p:message for="nacionalnost"/>
+                        <p:outputLabel value="Zemlja zaposlenja:"/>
+                        <p:inputText id="zemlja" value="#{registracijaKontroler.korisnik.zemljaZaposlenja}" required="false" requiredMessage="Morate uneti zemlju zaposlenja!"/>
+                        <p:message for="zemlja"/>
+                        <p:outputLabel value="NIO zaposlenja:"/>
+                        <p:inputText id="nio" value="#{registracijaKontroler.korisnik.nioZaposlenja}" required="false" requiredMessage="Morate uneti NIO zaposlenja!"/>
+                        <p:message for="nio"/>
+                        <p:outputLabel value="Naučno zvanje:"/>
+                        <p:inputText id="zvanje" value="#{registracijaKontroler.korisnik.naucnoZvanje}" required="false" requiredMessage="Morate uneti zvanje!"/>
+                        <p:message for="zvanje"/>
+                        <p:outputLabel value="Angažovanje:"/>
+                        <p:inputText id="angazovanje" value="#{registracijaKontroler.korisnik.angazovanje}" required="false" requiredMessage="Morate uneti angažovanje!"/>
+                        <p:message for="angazovanje"/>
+                        <p:outputLabel value="Stručne oblasti: (razdvajati zarezom)"/>
+                        <p:inputText id="oblasti" value="#{registracijaKontroler.korisnik.strucneOblasti}" required="false" requiredMessage="Morate uneti strucne oblasti!"/>
+                        <p:message for="oblasti"/>
+                        <p:outputLabel value="Mobilni telefon:"/>
+                        <p:inputText id="telefon" value="#{registracijaKontroler.korisnik.mobilni}" required="false" requiredMessage="Morate uneti telefon!" validatorMessage="Telefon nije u dobrom formatu!">
+                            <!--<f:validateRegex pattern="^0[1-9]\d{8,9}$"/>-->
+                        </p:inputText>
+                        <p:message for="telefon"/>
+                        <p:outputLabel value="E-mail:"/>
+                        <p:inputText id="email" value="#{registracijaKontroler.korisnik.email}" required="true" requiredMessage="Morate uneti e-mail!" validatorMessage="E-mail nije u dobrom formatu!">
+                            <f:validateRegex pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,6}$"/>
+                        </p:inputText>
+                        <p:message for="email"/>
+                        <p:outputLabel value="Adresa:"/>
+                        <p:inputText id="adresa" value="#{registracijaKontroler.korisnik.adresa}" required="false" requiredMessage="Morate uneti adresu!"/>
+                        <p:message for="adresa"/>
+                        <p:outputLabel value="Lična veb stranica:"/>
+                        <p:inputText id="stranica" value="#{registracijaKontroler.korisnik.vebStranica}" required="false" requiredMessage="Morate uneti veb stranicu!"/>
+                        <p:message for="stranica"/>
+                        <p:outputLabel value="Biografija:"/>
+                        <p:fileUpload id="biografija" value="#{registracijaKontroler.biografija}" multiple="false" label="Izaberi fajl" mode="simple" skinSimple="true" required="false" requiredMessage="Morate uneti biografiju!"/>
+
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton value="Potvrdi" action="#{registracijaKontroler.registracijaZahtev()}" update="forma" ajax="false"></p:commandButton>
+                </h:panelGroup>
+                <br/><br/><br/>
+                <p:outputLabel styleClass="poruka" value="#{registracijaKontroler.poruka}"/>
+            </h:form>
+            <br/><br/><br/>
+            <h:form>
+                <p:commandLink value="Nazad" action="/index?faces-redirect=true"/>
+                <br/>
+            </h:form>
+        </div> 
+    </h:body>
+</html>
+

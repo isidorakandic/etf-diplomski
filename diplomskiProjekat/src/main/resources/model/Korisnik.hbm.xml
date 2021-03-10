@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2019 10:16:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Korisnik" table="korisnik" catalog="baza_recenzenata" optimistic-lock="version">
+        <id name="idkorisnik" type="java.lang.Integer">
+            <column name="idkorisnik" />
+            <generator class="identity" />
+        </id>
+        <property name="ime" type="string">
+            <column name="ime" length="45" not-null="true" />
+        </property>
+        <property name="prezime" type="string">
+            <column name="prezime" length="45" not-null="true" />
+        </property>
+        <property name="korisnickoIme" type="string">
+            <column name="korisnicko_ime" length="45" not-null="true" />
+        </property>
+        <property name="lozinka" type="string">
+            <column name="lozinka" length="100" not-null="true" />
+        </property>
+        <property name="nacionalnost" type="string">
+            <column name="nacionalnost" length="45" />
+        </property>
+        <property name="zemljaZaposlenja" type="string">
+            <column name="zemlja_zaposlenja" length="45" />
+        </property>
+        <property name="nioZaposlenja" type="string">
+            <column name="nio_zaposlenja" length="45" />
+        </property>
+        <property name="naucnoZvanje" type="string">
+            <column name="naucno_zvanje" length="45" />
+        </property>
+        <property name="angazovanje" type="string">
+            <column name="angazovanje" length="45" />
+        </property>
+        <property name="strucneOblasti" type="string">
+            <column name="strucne_oblasti" length="200" />
+        </property>
+        <property name="mobilni" type="string">
+            <column name="mobilni" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" not-null="true" />
+        </property>
+        <property name="adresa" type="string">
+            <column name="adresa" length="100" />
+        </property>
+        <property name="vebStranica" type="string">
+            <column name="veb_stranica" length="256" />
+        </property>
+        <property name="nazivBiografije" type="string">
+            <column name="naziv_biografije" length="256" not-null="true" />
+        </property>
+        <property name="privremenaLozinkaPostavljena" type="java.lang.Long">
+            <column name="privremena_lozinka_postavljena" />
+        </property>
+        <property name="stanje" type="string">
+            <column name="stanje" length="5" not-null="true" />
+        </property>
+        <set name="korisnikProjekats" table="korisnik_projekat" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="idkorisnik" not-null="true" />
+            </key>
+            <one-to-many class="model.KorisnikProjekat" />
+        </set>
+    </class>
+</hibernate-mapping>

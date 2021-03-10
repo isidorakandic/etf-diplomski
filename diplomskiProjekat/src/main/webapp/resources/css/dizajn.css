@@ -1,0 +1,119 @@
+
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
+body{
+    background-color: beige;
+    height: 100%;
+    font-family: "Courier New", Courier, monospace;
+    font-size: large;
+}
+
+label, input{
+    font-family: "Courier New", Courier, monospace;
+    font-size: large;
+}
+
+button{
+    font-family: "Courier New", Courier, monospace;
+    font-size: large;
+    padding: 1px;
+}
+
+form{
+    display: inline-block;
+}
+
+.sadrzaj {
+    width: 900px;
+    min-height: 100%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+}
+
+.sadrzajTabela {
+    width: 80%;
+    min-height: 100%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    font-size: medium;
+}
+
+.dokumenti{
+    font-size: large;
+}
+
+.dataTables_wrapper{
+    font-family: "Courier New", Courier, monospace;
+}
+
+.ui-widget{
+    font-family: "Courier New", Courier, monospace;
+}
+
+a{
+    font-family: "Courier New", Courier, monospace;
+}
+a:link {
+    color: black;
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+}
+
+a:visited {
+    color: brown;
+    font-family: "Courier New", Courier, monospace;
+}
+
+a:hover {
+    color: brown;
+    text-decoration: underline;
+    font-family: "Courier New", Courier, monospace;
+}
+
+a:active {
+    color: yellowgreen;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.poruka{
+    color: yellowgreen;
+}
+
+.prihvacen{
+    color: lawngreen;
+}
+
+.odbijen{
+    color: lightcoral;
+}
+
+/*.inicijalno{ defalt ostaje
+    background-color: 
+}*/
+
+/*.ui-datepicker.ui-widget-content { 
+    border: 1px solid #888888; 
+    background: beige;
+     background: #bbbbbb url(images/ui-bg_glass_75_bbbbbb_1x400.png) 50% 50% repeat-x; 
+    font-weight: normal; 
+    color: #000000; 
+}
+
+.ui-selectonemenu-items-wrapper{
+    background: beige;
+    background-color: beige;
+}*/
+
+
+
+
+
+
+

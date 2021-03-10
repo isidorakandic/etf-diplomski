@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Baza recenzenata</title>
+    </h:head>
+    <h:body> 
+        <h:outputStylesheet library="css" name="dizajn.css"/>
+        <div class="sadrzaj"> 
+            <h2>Promena lozinke</h2>
+            <h:form id="forma">
+                <p:outputLabel id="poruka" styleClass="poruka" value="#{LozinkaKontroler.poruka}"/>
+                <h:panelGrid columns="3">
+                    <p:outputLabel value="Trenutna lozinka: "/>
+                    <p:password  id="stara" value="#{LozinkaKontroler.staraLozinka}" required="true" requiredMessage="Morate uneti trenutnu lozinku!"/>
+                    <p:message for="stara"/>
+                    <p:outputLabel value="Nova lozinka: "/>
+                    <p:password id="nova" value="#{LozinkaKontroler.novaLozinka}" required="true" requiredMessage="Morate uneti novu lozinku!" validatorMessage="Lozinka nije u dobrom formatu!">
+<!--                        <f:validateRegex pattern="^(?=.{8,12}$)(?!.*(\S)\1{2})(?=.*[A-Z])(?=.*[a-z]{3})(?=.*\d)(?=.*[^a-zA-Z0-9])([a-zA-Z]\S*)$"></f:validateRegex>-->
+                    </p:password>
+                    <p:message for="nova"/>
+                    <p:outputLabel value="Potvrda lozinke: "/>
+                    <p:password id="potvrda" value="#{LozinkaKontroler.potvrdaNoveLozinke}" required="true" requiredMessage="Morate uneti potvrdu lozinke!"/>
+                    <p:message for="potvrda"/>
+                </h:panelGrid>
+                <br/>
+                <p:commandButton value="Potvrdi" action="#{LozinkaKontroler.promeniLozinku()}"/>
+            </h:form>
+            <h:form>
+                <br/><br/><br/>
+                <p:commandLink value="Nazad" action="/faces/korisnik/pocetna?faces-redirect=true"/>
+            </h:form>
+        </div> 
+    </h:body>
+</html>
+

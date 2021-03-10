@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Baza recenzenata </title>
+    </h:head>
+    <h:body> 
+        <h:outputStylesheet library="css" name="dizajn.css"/>
+        <div class="sadrzaj"> 
+            <h2>Početna</h2>
+            <h:form id="forma">
+                <p:outputPanel rendered="#{not korisnikKontroler.prijavaPrihvacena()}">
+                    <p:outputLabel styleClass="poruka" value="Vaša prijava je #{korisnikKontroler.stanjePrijave()}."/>
+                </p:outputPanel>
+                <p:outputPanel rendered="#{korisnikKontroler.prijavaPrihvacena()}">
+                    <br/>
+                    <p:outputLabel styleClass="poruka" value="Imate #{korisnikKontroler.brojNeocenjenihProjekataIspis()} neocenjenih projekata. --> "/>
+                    <p:commandLink value="Pregled i ocenjivanje projekata" action="pregledProjekata?faces-redirect=true"/>
+                    <br/><br/>
+                    <p:commandLink value="Pregled i izmena profila" action="profil?faces-redirect=true"/>
+                    <br/><br/><br/>
+                    <h3>Obaveštenja</h3>
+                    <p:dataList value="#{obavestenjeKontroler.obavestenja}" var="obavestenje" type="definition">
+                        <h:outputText value="#{obavestenje.datum}" class="ObavestenjeDatum">
+                            <f:convertDateTime type="date"/>
+                        </h:outputText>
+                        <br/>
+                        <p:outputLabel value="#{obavestenje.naslov}" class="ObavestenjeNaslov"/>
+                        <br/>
+                        <p:outputLabel value="#{obavestenje.tekst}" class="ObavestenjeTeskt"/>
+                        <br/><br/>
+                    </p:dataList>
+                </p:outputPanel>
+                <br/><br/><br/>
+                <p:commandLink value="Logout" action="#{LoginKontroler.logout()}"/>
+                <br/><br/>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

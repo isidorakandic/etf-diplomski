@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2019 10:16:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Obavestenje" table="obavestenje" catalog="baza_recenzenata" optimistic-lock="version">
+        <id name="idobavestenje" type="java.lang.Integer">
+            <column name="idobavestenje" />
+            <generator class="identity" />
+        </id>
+        <property name="naslov" type="string">
+            <column name="naslov" length="50" not-null="true" />
+        </property>
+        <property name="tekst" type="string">
+            <column name="tekst" length="500" not-null="true" />
+        </property>
+        <property name="potpis" type="string">
+            <column name="potpis" length="50" not-null="true" />
+        </property>
+        <property name="datum" type="date">
+            <column name="datum" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

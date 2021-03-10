@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2019 10:16:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Pitanje" table="pitanje" catalog="baza_recenzenata" optimistic-lock="version">
+        <id name="idpitanje" type="java.lang.Integer">
+            <column name="idpitanje" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="programskiPoziv" class="model.ProgramskiPoziv" fetch="select">
+            <column name="idprogramski_poziv" not-null="true" />
+        </many-to-one>
+        <property name="tekst" type="string">
+            <column name="tekst" length="200" not-null="true" />
+        </property>
+        <set name="odgovors" table="odgovor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idpitanje" not-null="true" />
+            </key>
+            <one-to-many class="model.Odgovor" />
+        </set>
+        <set name="korisnikOdgovors" table="korisnik_odgovor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idpitanje" not-null="true" />
+            </key>
+            <one-to-many class="model.KorisnikOdgovor" />
+        </set>
+    </class>
+</hibernate-mapping>

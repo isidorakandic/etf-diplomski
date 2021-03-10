@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2019 10:16:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.ProgramskiPoziv" table="programski_poziv" catalog="baza_recenzenata" optimistic-lock="version">
+        <id name="idprogramskiPoziv" type="java.lang.Integer">
+            <column name="idprogramski_poziv" />
+            <generator class="identity" />
+        </id>
+        <property name="naziv" type="string">
+            <column name="naziv" length="100" not-null="true" />
+        </property>
+        <set name="pitanjes" table="pitanje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idprogramski_poziv" not-null="true" />
+            </key>
+            <one-to-many class="model.Pitanje" />
+        </set>
+        <set name="projekats" table="projekat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idprogramski_poziv" not-null="true" />
+            </key>
+            <one-to-many class="model.Projekat" />
+        </set>
+    </class>
+</hibernate-mapping>

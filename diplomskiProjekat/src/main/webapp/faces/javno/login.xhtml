@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Baza recenzenata</title> 
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="dizajn.css"/>
+        <div class="sadrzaj"> 
+            <h2>Login</h2>
+            <h:form id="forma">
+                <p:outputLabel id="poruka" styleClass="poruka" value="#{LoginKontroler.poruka}"/>
+                <h:panelGrid columns="3">
+                    <p:outputLabel value="Korisničko ime: "/>
+                    <p:inputText id="korime" value="#{LoginKontroler.korime}" required="true" requiredMessage="Morate uneti korisničko ime!"/>
+                    <p:message for="korime"/>
+                    <p:outputLabel value="Lozinka: "/>
+                    <p:password id="lozinka" value="#{LoginKontroler.lozinka}" required="true" requiredMessage="Morate uneti lozinku!"/>
+                    <p:message for="lozinka"/>
+                </h:panelGrid>
+                <br/><br/>
+                <p:commandButton value="Potvrdi" action="#{LoginKontroler.login()}" update="forma"/>
+                <br/><br/>
+                <p:commandLink value="Zaboravili ste lozinku?" action="zaboravljenaLozinka?faces-redirect=true"/>
+                <br/><br/><br/>
+                <p:commandLink value="Nazad" action="/index?faces-redirect=true"/>
+            </h:form>
+        </div> 
+    </h:body>
+</html>
+

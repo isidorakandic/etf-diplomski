@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2019 10:16:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.KorisnikOdgovor" table="korisnik_odgovor" catalog="baza_recenzenata" optimistic-lock="version">
+        <composite-id name="id" class="model.KorisnikOdgovorId">
+            <key-property name="idodgovor" type="int">
+                <column name="idodgovor" />
+            </key-property>
+            <key-property name="idpitanje" type="int">
+                <column name="idpitanje" />
+            </key-property>
+            <key-property name="idkorisnik" type="int">
+                <column name="idkorisnik" />
+            </key-property>
+            <key-property name="idprojekat" type="int">
+                <column name="idprojekat" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="korisnikProjekat" class="model.KorisnikProjekat" update="false" insert="false" fetch="select">
+            <column name="idkorisnik" not-null="true" />
+            <column name="idprojekat" not-null="true" />
+        </many-to-one>
+        <many-to-one name="odgovor" class="model.Odgovor" update="false" insert="false" fetch="select">
+            <column name="idodgovor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pitanje" class="model.Pitanje" update="false" insert="false" fetch="select">
+            <column name="idpitanje" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2019 10:16:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.KorisnikProjekat" table="korisnik_projekat" catalog="baza_recenzenata" optimistic-lock="version">
+        <composite-id name="id" class="model.KorisnikProjekatId">
+            <key-property name="idkorisnik" type="int">
+                <column name="idkorisnik" />
+            </key-property>
+            <key-property name="idprojekat" type="int">
+                <column name="idprojekat" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="korisnik" class="model.Korisnik" update="false" insert="false" fetch="select">
+            <column name="idkorisnik" not-null="true" />
+        </many-to-one>
+        <many-to-one name="projekat" class="model.Projekat" update="false" insert="false" fetch="select">
+            <column name="idprojekat" not-null="true" />
+        </many-to-one>
+        <property name="datumDodeljivanja" type="date">
+            <column name="datum_dodeljivanja" length="10" not-null="true" />
+        </property>
+        <property name="ocena" type="java.lang.Integer">
+            <column name="ocena" />
+        </property>
+        <property name="stanjeOdgovora" type="string">
+            <column name="stanje_odgovora" length="15" not-null="true" />
+        </property>
+        <set name="korisnikOdgovors" table="korisnik_odgovor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idkorisnik" not-null="true" />
+                <column name="idprojekat" not-null="true" />
+            </key>
+            <one-to-many class="model.KorisnikOdgovor" />
+        </set>
+    </class>
+</hibernate-mapping>
